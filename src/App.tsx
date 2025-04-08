@@ -36,7 +36,7 @@ export default function App() {
   };
 
   const updateCrypto = async (name: string) => {
-    const newPrice = await fetchCryptoPrice(name); // ✅ Narxni olish
+    const newPrice = await fetchCryptoPrice(name); 
     if (newPrice !== null) {
       setCryptos((prevCryptos) =>
         prevCryptos.map((crypto) =>
@@ -49,9 +49,8 @@ export default function App() {
   };
 
   const updateAllCryptos = async () => {
-    if (intervalId) clearInterval(intervalId); // Eski intervalni to‘xtatish
+    if (intervalId) clearInterval(intervalId);
 
-    // Barcha valyutalarni yangilash
     const updatedCryptos = await Promise.all(
       cryptos.map(async (crypto) => {
         const newPrice = await fetchCryptoPrice(crypto.name);
@@ -62,7 +61,7 @@ export default function App() {
     );
     setCryptos(updatedCryptos);
 
-    startAutoUpdate(); // ✅ Yangi intervalni ishga tushirish
+    startAutoUpdate();
   };
 
   const startAutoUpdate = () => {
